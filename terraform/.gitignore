@@ -1,0 +1,6 @@
+*.tfstate
+*.tfstate.backup
+.terraform/
+inventory.txt
+terraform.tfvars
+ansible/hosts

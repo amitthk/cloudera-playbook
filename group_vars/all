@@ -1,5 +1,5 @@
 ---
-
+ansible_users: centos
 ansible_become: true
 tmp_dir: /tmp
 krb5_realm: HDFS.AMITTHK.COM

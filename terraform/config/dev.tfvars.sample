@@ -1,0 +1,12 @@
+aws_access_key=""
+aws_secret_key=""
+vpc_id="vpc-123424324"
+region="ap-southeast-1"
+ami_id="ami-8e0205f2"
+public_subnets_cidr_blocks=["10.0.0.0/24"]
+private_subnets_cidr_blocks=["10.0.1.0/24"]
+aws_keypair_name="cdh_nodes_key"
+instance_type="t2.micro"
+spot_price= 0.0045
+spot_cdh_master_count=2
+spot_cdh_worker_count=5
