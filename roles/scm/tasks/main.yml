@@ -28,6 +28,32 @@
 - set_fact: scm_host_names="{{ scm_hosts_result.host_names }}"
 - debug: var=scm_host_names
 
+- name: Get the info about all the scm hosts
+  uri:
+    url: "{{ cm_api_url }}/hosts"
+    method: GET
+    body_format: json
+    status_code: 200
+    force_basic_auth: yes
+    user: "{{ scm_default_user }}"
+    password: "{{ scm_default_pass }}"
+    return_content: yes
+  register: scm_hosts_resp
+  delegate_to: localhost
+- debug: var=scm_hosts_resp
+
+- name: get all the hosts info
+  copy:
+    content: "{{scm_hosts_resp}}"
+    dest: /tmp/all_hosts_info.json
+    delegate_to: localhost
+
+- name: get the hosts lists
+  get_csm_hosts:
+    task_vars:
+    scm_host_list: "scm_hosts_resp"
+  register: scm_host_ids
+
 - include: license.yml
 - include: scm.yml
 - include: cms.yml
