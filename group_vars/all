@@ -2,12 +2,14 @@
 
 ansible_become: true
 tmp_dir: /tmp
-krb5_realm: AD.SEC.EXAMPLE.COM
+krb5_realm: HDFS.AMITTHK.COM
 ad_domain: "{{ krb5_realm.lower() }}"
 cluster_domain: gce.example.com
 kdc: w2k8-1.ad.sec.example.com
-computer_ou: OU=computer_hosts,OU=hadoop_prd,DC=ad,DC=sec,DC=example,DC=com
-ldap_group_search_base: OU=groups,OU=hadoop_prd,DC=ad,DC=sec,DC=example,DC=com
-ldap_user_search_base: DC=ad,DC=sec,DC=example,DC=com?subtree?(memberOf=CN=hadoop_users,OU=groups,OU=hadoop_prd,DC=ad,DC=sec,DC=example,DC=com)
+computer_ou: OU=computer_hosts,OU=hadoop_prd,DC=hdfs,DC=amitthk,DC=com
+ldap_group_search_base: OU=groups,OU=hadoop_prd,DC=hdfs,DC=amitthk,DC=com
+ldap_user_search_base: DC=hdfs,DC=amitthk,DC=com?subtree?(memberOf=CN=hadoop_users,OU=groups,OU=hadoop_prd,DC=hdfs,DC=amitthk,DC=com)
 override_gid: 999999
 ad_site: Default-First-Site-Name
+ansible_ssh_extra_args: '-o StrictHostKeyChecking=no'
+

@@ -12,4 +12,4 @@
     port={{ scm_port }}
     delay=5
     state=started
-    timeout=300
+    timeout=900
