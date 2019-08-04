@@ -126,7 +126,7 @@ EOF
         cd $APP_BASE_DIR
         for playbook in ${PLAYBOOK_NAMES//,/ }
         do
-        ansible-playbook -i hosts --tags $PLAYBOOK_TAGS \
+        ansible-playbook -vvvvv -i hosts --tags $PLAYBOOK_TAGS \
         --private-key=${cdhstack_key} \
         ${playbook}
         done
