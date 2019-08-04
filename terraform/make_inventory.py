@@ -20,7 +20,7 @@ scm_server
 db_server
 krb5_server
 
-[gateway_servers]
+[gateway_servers:children]
 utiliy_servers
 
 [master_servers]
