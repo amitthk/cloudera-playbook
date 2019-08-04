@@ -3,6 +3,7 @@ ansible_user: centos
 ansible_become: true
 tmp_dir: /tmp
 krb5_realm: HDFS.AMITTHK.COM
+default_realm: "{{krb5_realm}}"
 ad_domain: "{{ krb5_realm.lower() }}"
 cluster_domain: gce.example.com
 kdc: w2k8-1.ad.sec.example.com
