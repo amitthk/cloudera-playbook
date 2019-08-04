@@ -1,0 +1,15 @@
+dn: cn=jvcdp,ou=People,{{ldap_root_dn_suffix}}
+changetype: add
+uid: jvcdp
+cn: jvcdp
+sn: 3
+objectClass: top
+objectClass: posixAccount
+objectClass: inetOrgPerson
+loginShell: /bin/bash
+homeDirectory: /home/jvcdp
+uidNumber: 10000002
+gidNumber: 10000002
+userPassword: {{ ldap_rootpw_hash.stdout }}
+mail: jvcdp@{{ldap_server_domain_name}}
+gecos: Admin User

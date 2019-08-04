@@ -1,0 +1,6 @@
+---
+# tasks file for ntp
+- name: install ntp
+  yum:
+    name: "{{ntp_packages}}"
+    state: present
