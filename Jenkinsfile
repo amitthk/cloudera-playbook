@@ -45,6 +45,7 @@ stages{
 
         env.repo_bucket_credentials_id = "$params.AWS_CRED_ID";
         env.aws_s3_bucket_name = 'jvcdp-repo';
+        env.ansible_verbosity = '-vvv'
         env.APP_BASE_DIR = pwd()
         env.GIT_HASH = sh (script: "git rev-parse --short HEAD", returnStdout: true)
         env.TIMESTAMP = sh (script: "date +'%Y%m%d%H%M%S%N' | sed 's/[0-9][0-9][0-9][0-9][0-9][0-9]\$//g'", returnStdout: true)
@@ -126,7 +127,7 @@ EOF
         cd $APP_BASE_DIR
         for playbook in ${PLAYBOOK_NAMES//,/ }
         do
-        ansible-playbook -vvvvv -i hosts --tags $PLAYBOOK_TAGS \
+        ansible-playbook ${ansible_verbosity} -i hosts --tags $PLAYBOOK_TAGS \
         --private-key=${cdhstack_key} \
         ${playbook}
         done
