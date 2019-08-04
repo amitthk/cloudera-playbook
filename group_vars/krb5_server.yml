@@ -1,6 +1,8 @@
 ---
 
 # 'ad', 'mit', or 'none' to disable security
+default_realm: "{{krb5_realm}}"
+
 krb5_kdc_type: mit
 
 krb5_kdc_master_passwd: changeme
