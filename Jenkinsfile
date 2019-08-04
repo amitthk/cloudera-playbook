@@ -22,7 +22,8 @@ parameters {
     string(name: 'AWS_DEFAULT_REGION', defaultValue: 'ap-southeast-1', description: 'AWS default region')
     string(name: 'PLAYBOOK_TAGS', defaultValue: 'all', description: 'playbook tags to run')
     string(name: 'PLAYBOOK_NAMES', defaultValue: 'site.yml', description: 'playbooks to run')
-    string(name: 'AWS_CRED_ID', defaultValue: 'deployadmin', description: 'AWS_CRED_ID')
+    string(name: 'AWS_CRED_ID', defaultValue: 'ec2s3admin', description: 'AWS_CRED_ID')
+    string(name: 'DEPLOY_KEY_CRED_ID', defaultValue: 'deployadmin', description: 'AWS_CRED_ID')
 }
 
 stages{
@@ -40,6 +41,7 @@ stages{
         env.PLAYBOOK_NAMES = "$params.PLAYBOOK_NAMES"
         env.MASTERS_COUNT = "$params.MASTERS_COUNT"
         env.WORKERS_COUNT = "$params.WORKERS_COUNT"
+        env.DEPLOY_KEY_CRED_ID = "$params.DEPLOY_KEY_CRED_ID"
 
         env.repo_bucket_credentials_id = "$params.AWS_CRED_ID";
         env.aws_s3_bucket_name = 'jvcdp-repo';
@@ -118,7 +120,7 @@ EOF
             }
         }
         steps{
-        withCredentials([sshUserPrivateKey(credentialsId: "cdhstack_key_cred", keyFileVariable: 'cdhstack_key')]) {
+        withCredentials([sshUserPrivateKey(credentialsId: "${DEPLOY_KEY_CRED_ID}", keyFileVariable: 'cdhstack_key')]) {
 
         sh '''#!/bin/bash -xe
         cd $APP_BASE_DIR
