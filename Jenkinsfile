@@ -41,7 +41,7 @@ stages{
         env.MASTERS_COUNT = "$params.MASTERS_COUNT"
         env.WORKERS_COUNT = "$params.WORKERS_COUNT"
 
-        env.repo_bucket_credentials_id = "$params.WORKERS_COUNT";
+        env.repo_bucket_credentials_id = "$params.AWS_CRED_ID";
         env.aws_s3_bucket_name = 'jvcdp-repo';
         env.APP_BASE_DIR = pwd()
         env.GIT_HASH = sh (script: "git rev-parse --short HEAD", returnStdout: true)
