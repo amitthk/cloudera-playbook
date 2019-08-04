@@ -23,7 +23,7 @@ parameters {
     string(name: 'PLAYBOOK_TAGS', defaultValue: 'all', description: 'playbook tags to run')
     string(name: 'PLAYBOOK_NAMES', defaultValue: 'site.yml', description: 'playbooks to run')
     string(name: 'AWS_CRED_ID', defaultValue: 'ec2s3admin', description: 'AWS_CRED_ID')
-    string(name: 'DEPLOY_KEY_CRED_ID', defaultValue: 'deployadmin', description: 'AWS_CRED_ID')
+    string(name: 'DEPLOY_KEY_CRED_ID', defaultValue: 'cdhstack_admin', description: 'AWS_CRED_ID')
 }
 
 stages{
