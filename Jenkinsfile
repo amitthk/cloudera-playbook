@@ -87,7 +87,7 @@ EOF
             '''
             sh '''
             cd $APP_BASE_DIR/terraform
-            rm -f $APP_BASE_DIR/ansible/hosts | true
+            rm -f $APP_BASE_DIR/hosts | true
             pwd && ls -lart .
             chmod 755 $APP_BASE_DIR/terraform/make_inventory.py
             python $APP_BASE_DIR/terraform/make_inventory.py $APP_BASE_DIR/terraform/terraform.tfstate
@@ -98,7 +98,7 @@ EOF
                 accessKeyVariable: 'AWS_ACCESS_KEY_ID', 
                 credentialsId: "${repo_bucket_credentials_id}", 
                 secretKeyVariable: 'AWS_SECRET_ACCESS_KEY']]){
-                    for(distFileName in ["ansible/hosts","terraform/terraform.tfstate"]) {
+                    for(distFileName in ["hosts","terraform/terraform.tfstate"]) {
                             awsIdentity() //show us what aws identity is being used
                             def srcLocation = "${APP_BASE_DIR}"+"/"+"${distFileName}";
                             def distLocation = 'terraform/' + "${STACK_NAME}/" + "${env.TIMESTAMP}"+"/"+ distFileName;
