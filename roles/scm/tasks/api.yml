@@ -4,7 +4,7 @@
 - name: Install Python PIP
   yum: 
     name: python-pip
-    state: latest
+    state: present
     update_cache: yes
   delegate_to: localhost
 
