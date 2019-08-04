@@ -21,7 +21,7 @@ parameters {
     string(name: 'WORKERS_COUNT', defaultValue: '3', description: 'WORKERS Count')
     string(name: 'AWS_DEFAULT_REGION', defaultValue: 'ap-southeast-1', description: 'AWS default region')
     string(name: 'PLAYBOOK_TAGS', defaultValue: 'all', description: 'playbook tags to run')
-    string(name: 'PLAYBOOK_NAMES', defaultValue: 'main.yml,ldap.yml,kerberos.yml', description: 'playbooks to run')
+    string(name: 'PLAYBOOK_NAMES', defaultValue: 'site.yml', description: 'playbooks to run')
 }
 
 stages{
