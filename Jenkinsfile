@@ -120,8 +120,13 @@ EOF
         withCredentials([sshUserPrivateKey(credentialsId: "cdhstack_key_cred", keyFileVariable: 'cdhstack_key')]) {
 
         sh '''#!/bin/bash -xe
-        cd $APP_BASE_DIR/ansible
-        ansible-playbook -i hosts --tags $PLAYBOOK_TAGS --private-key=${cdhstack_key} main.yml
+        cd $APP_BASE_DIR
+        for playbook in ${PLAYBOOK_NAMES//,/ }
+        do
+        ansible-playbook -i hosts --tags $PLAYBOOK_TAGS \
+        --private-key=${cdhstack_key} \
+        ${playbook}
+        done
         '''
         }
         }
