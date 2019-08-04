@@ -22,6 +22,7 @@ parameters {
     string(name: 'AWS_DEFAULT_REGION', defaultValue: 'ap-southeast-1', description: 'AWS default region')
     string(name: 'PLAYBOOK_TAGS', defaultValue: 'all', description: 'playbook tags to run')
     string(name: 'PLAYBOOK_NAMES', defaultValue: 'site.yml', description: 'playbooks to run')
+    string(name: 'AWS_CRED_ID', defaultValue: 'deployadmin', description: 'AWS_CRED_ID')
 }
 
 stages{
@@ -40,7 +41,7 @@ stages{
         env.MASTERS_COUNT = "$params.MASTERS_COUNT"
         env.WORKERS_COUNT = "$params.WORKERS_COUNT"
 
-        env.repo_bucket_credentials_id = "s3repoadmin";
+        env.repo_bucket_credentials_id = "$params.WORKERS_COUNT";
         env.aws_s3_bucket_name = 'jvcdp-repo';
         env.APP_BASE_DIR = pwd()
         env.GIT_HASH = sh (script: "git rev-parse --short HEAD", returnStdout: true)
