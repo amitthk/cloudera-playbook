@@ -103,7 +103,7 @@ EOF
                             def srcLocation = "${APP_BASE_DIR}"+"/"+"${distFileName}";
                             def distLocation = 'terraform/' + "${STACK_NAME}/" + "${env.TIMESTAMP}"+"/"+ distFileName;
                             echo "Uploading ${srcLocation} to ${distLocation}"
-                            withAWS(region: "${env.aws_s3_bucket_region}"){
+                            withAWS(region: "${AWS_DEFAULT_REGION}"){
                             s3Upload(file: srcLocation, bucket: "${env.aws_s3_bucket_name}", path: distLocation)
                             }
                         }
