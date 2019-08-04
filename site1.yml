@@ -1,5 +1,11 @@
 ---
 # Cloudera playbook
+- name: Install ntp
+  hosts: all
+  roles:
+    - ntp
+  when: tags is defined
+  tags: ntp
 
 - name: Install Cloudera Manager Server
   hosts: scm_server
