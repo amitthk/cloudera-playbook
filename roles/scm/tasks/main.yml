@@ -1,6 +1,8 @@
 ---
 #Include the initial configure role
 - include: configure.yml
+  when: tags is defined
+  tags: install-cm-server
 
 - name: Get Cloudera Manager API version
   uri:
@@ -44,14 +46,12 @@
     password: "{{ scm_default_pass }}"
     return_content: yes
   register: scm_hosts_resp
-  delegate_to: localhost
 - debug: var=scm_hosts_resp
 
 - name: get all the hosts info
   copy:
     content: "{{scm_hosts_resp}}"
     dest: /tmp/all_hosts_info.json
-    delegate_to: localhost
 
 - name: get the hosts lists
   get_csm_hosts:
