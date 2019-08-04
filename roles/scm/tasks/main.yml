@@ -1,4 +1,7 @@
 ---
+#Include the initial configure role
+- include: configure.yml
+
 - name: Get Cloudera Manager API version
   uri:
     url: http://{{ hostvars[scm_hostname]['inventory_hostname'] }}:{{ scm_port }}/api/version
